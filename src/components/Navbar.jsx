@@ -4,6 +4,7 @@ import "./navbar.css";
 import logo from "../images/logo.png";
 import { FaBars } from "react-icons/fa";
 import { useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 
 const Navbar = () => {
   const [isNavShowing, setIsNavShowing] = useState(false);
@@ -20,10 +21,11 @@ const Navbar = () => {
           {" "}
           {links.map(({ name, path }, index) => {
             return (
-              <li>
+              <li key={index}>
                 <NavLink
                   to={path}
                   className={({ isActive }) => (isActive ? "active-nav" : "")}
+                  onClick={() => setIsNavShowing((prev) => !prev)}
                 >
                   {name}
                 </NavLink>
@@ -31,8 +33,11 @@ const Navbar = () => {
             );
           })}
         </ul>
-        <button className="nav__toggle-btn">
-          <FaBars />
+        <button
+          className="nav__toggle-btn"
+          onClick={() => setIsNavShowing((prev) => !prev)}
+        >
+          {isNavShowing ? <AiOutlineClose /> : <FaBars />}
         </button>
       </div>
     </nav>
