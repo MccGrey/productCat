@@ -1,9 +1,15 @@
 import React from "react";
-import Header from "../../components/Header";
+import MainHeader from "../../components/MainHeader";
 import "./home.css";
+import Programs from "../../components/Programs";
 
 const Homee = () => {
-  return <Header />;
+  return (
+    <>
+      <MainHeader />
+      <Programs />
+    </>
+  );
 };
 
 export default Homee;
